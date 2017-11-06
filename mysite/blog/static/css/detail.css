@@ -1,0 +1,18 @@
+#salad {
+    width: 170px;
+    background-color: darkgray;
+    font-size: 30px;
+}
+
+.info {
+   font-weight: 300;
+}
+
+.comment{
+    width: 500px;
+
+}
+.comment p{
+    margin: 7px 0 7px 0;
+    padding-left: 20px;
+}
