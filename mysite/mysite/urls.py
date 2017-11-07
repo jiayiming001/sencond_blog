@@ -19,10 +19,18 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import RedirectView
 from django.urls import reverse_lazy
+from blog.sitemaps import  PostSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps = {
+    'post':PostSitemap
+}
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
     url(r'^$',RedirectView.as_view(url=reverse_lazy('blog:post_list'))),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, docunment_root=settings.STATIC_ROOT)
 
